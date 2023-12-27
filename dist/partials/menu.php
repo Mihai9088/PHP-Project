@@ -1,4 +1,10 @@
-<?php include('../config/constants.php');  ?>
+<?php include('../config/constants.php');
+include('loginCheck.php');
+?>
+
+
+
+
 
 <style>
     .font-dancingScript {
@@ -27,6 +33,9 @@
                 </li>
                 <li>
                     <a class="hover:text-gray-500" href="order.php">Order</a>
+                </li>
+                <li>
+                    <a class="hover:text-gray-500" href="logout.php">Logout</a>
                 </li>
             </ul>
         </div>

@@ -17,7 +17,31 @@ if ($res == TRUE) {
 } else {
     header("location:" . SITEURL . "dist/admin.php");
 }
+
+
+
+
+if (isset($_POST['submit'])) {
+    $full_name = $_POST['full_name'];
+    $username = $_POST['username'];
+    $id = $_POST['id'];
+
+    $sql = "UPDATE tbl_admin SET 
+    full_name = '$full_name',
+    username = '$username' WHERE id = $id";
+
+    $res = mysqli_query($conn, $sql);
+
+    if ($res == TRUE) {
+        $_SESSION['update'] = "Admin actualizat cu succes.";
+        header("location:" . SITEURL . "/dist/admin.php");
+    } else {
+        $_SESSION['update'] = "Adminul nu a putut fi actualizat.";
+        header("location:" . SITEURL . "/dist/admin.php");
+    }
+}
 ?>
+
 
 <section class="container mx-auto my-8 p-8 bg-white shadow-lg rounded-md">
     <div>
@@ -51,27 +75,5 @@ if ($res == TRUE) {
     </div>
 </section>
 
-<?php
-
-if (isset($_POST['submit'])) {
-    $full_name = $_POST['full_name'];
-    $username = $_POST['username'];
-    $id = $_POST['id'];
-
-    $sql = "UPDATE tbl_admin SET 
-    full_name = '$full_name',
-    username = '$username' WHERE id = $id";
-
-    $res = mysqli_query($conn, $sql);
-
-    if ($res == TRUE) {
-        $_SESSION['update'] = "Admin actualizat cu succes.";
-        header("location:" . SITEURL . "/dist/admin.php");
-    } else {
-        $_SESSION['update'] = "Adminul nu a putut fi actualizat.";
-        header("location:" . SITEURL . "/dist/admin.php");
-    }
-}
-?>
 
 <?php include('partials/footer.php'); ?>
