@@ -1,8 +1,5 @@
 <?php include('../config/constants.php') ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,8 +16,8 @@
 
 <body class="bg-gray-200 flex items-center justify-center h-screen">
 
-    <div class="bg-white p-8 rounded-md shadow-md w-96">
-        <h1 class="text-2xl font-bold mb-4">Login</h1>
+    <div class="bg-white p-8 rounded-md shadow-md max-w-md w-full">
+        <h1 class="text-2xl font-bold mb-4 text-center">Login</h1>
 
         <?php
 
@@ -52,7 +49,7 @@
                 <input type="submit" name="submit" value="Login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition w-full">
             </div>
 
-            <span class="block mb-4 text-sm text-gray-600">
+            <span class="block mb-4 text-sm text-gray-600 text-center">
                 Back <a href="index.php" class="text-blue-500 hover:underline">Home</a>
             </span>
 
@@ -63,7 +60,6 @@
 
 </html>
 
-
 <?php
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
@@ -73,15 +69,13 @@ if (isset($_POST['submit'])) {
 
     $count = mysqli_num_rows($res);
 
-
     if ($count == 1) {
-        $_SESSION['login'] = "Logat cu succes.";
+        $_SESSION['login'] = "Logged in.";
         $_SESSION['user'] = $username;
         header("location:" . SITEURL . "/dist/index.php");
     } else {
-        $_SESSION['login'] = "Nume utilizator sau parola incorecte.";
+        $_SESSION['login'] = "Username or password incorrect.";
         header("location:" . SITEURL . "/dist/login.php");
     }
 }
-
 ?>

@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
         <div class="mb-4">
             <label for="image" class="block text-sm font-medium text-gray-600">Image:</label>
             <?php if ($image_name != "") : ?>
-                <img src="../images/<?php echo $image_name; ?>" class="mb-2">
+                <img src="../images/<?php echo $image_name; ?>" class="mb-2 max-w-full h-auto">
             <?php else : ?>
                 <p>Image not added</p>
             <?php endif; ?>

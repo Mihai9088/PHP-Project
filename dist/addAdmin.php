@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $password = isset($_POST["password"]) ? md5($_POST["password"]) : '';
 
     if (empty($full_name) || empty($username) || empty($password)) {
-        $errorMessage = "Toate câmpurile sunt obligatorii.";
+        $errorMessage = "All fields are mandatory.";
     } else {
         $sql = "INSERT INTO tbl_admin SET 
         full_name = '$full_name',
@@ -17,10 +17,10 @@ if (isset($_POST['submit'])) {
         $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
         if ($res == true) {
-            $_SESSION['add'] = "Admin adaugat cu succes.";
+            $_SESSION['add'] = "Admin succesfully added.";
             header("location:" . SITEURL . "/dist/admin.php");
         } else {
-            $_SESSION['add'] = "Adminul nu a putut fi adaugat.";
+            $_SESSION['add'] = "Admin could not be added.";
             header("location:" . SITEURL . "/dist/addAdmin.php");
         }
     }
@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
                 <label for="password" class="block text-sm font-medium text-gray-600">Password:</label>
                 <input type="password" name="password" id="password" placeholder="Enter Password" class="mt-1 p-2 border rounded-md w-full">
             </div>
-            <button type="submit" name="submit" value="Add Admin" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-700 transition">Submit</button>
+            <button type="submit" name="submit" value="Add Admin" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-700 transition w-full">Submit</button>
         </form>
     </div>
 </section>

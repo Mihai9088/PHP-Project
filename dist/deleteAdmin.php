@@ -10,9 +10,9 @@ $res = mysqli_query($conn, $sql);
 
 
 if ($res == TRUE) {
-    $_SESSION['delete'] = "Adminul a fost sters cu succes.";
+    $_SESSION['delete'] = "Admin succesfully deleted.";
     header("location:" . SITEURL . "/dist/admin.php");
 } else {
-    $_SESSION['delete'] = "Adminul nu  a fost sters cu succes.";
+    $_SESSION['delete'] = "Admin could not be added.";
     header("location:" . SITEURL . "/dist/admin.php");
 }

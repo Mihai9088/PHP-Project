@@ -1,5 +1,4 @@
-<?php
-include('partials/menu.php');
+<?php include('partials/menu.php');
 
 if (isset($_POST['submit'])) {
     $title = $_POST['title'];

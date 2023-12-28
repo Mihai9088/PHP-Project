@@ -6,12 +6,10 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 
-
-
 if (isset($_POST['submit'])) {
-    $current_password = $_POST['current_password'];
-    $new_password = $_POST['new_password'];
-    $confirm_password = $_POST['confirm_password'];
+    $current_password = md5($_POST['current_password']);
+    $new_password = md5($_POST['new_password']);
+    $confirm_password = md5($_POST['confirm_password']);
     $id = $_POST['id'];
     $sql = "SELECT * FROM tbl_admin WHERE id = $id AND password = '$current_password'";
     $res = mysqli_query($conn, $sql);
@@ -20,11 +18,7 @@ if (isset($_POST['submit'])) {
         $count = mysqli_num_rows($res);
 
         if ($count == 1) {
-
-
             if ($new_password == $confirm_password) {
-
-
                 $sql2 = "UPDATE tbl_admin SET password = '$new_password' WHERE id = $id";
                 $res2 = mysqli_query($conn, $sql2);
 
@@ -48,12 +42,10 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-
-
-<section class="container mx-auto my-8 p-8 bg-white shadow-lg rounded-md w-screen">
+<section class="container mx-auto my-8 p-8 bg-white shadow-lg rounded-md sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
     <h1 class="text-4xl font-bold mb-8">Change Password</h1>
 
-    <form action="" method="POST" class="max-w-md mx-auto">
+    <form action="" method="POST">
         <div class="mb-4">
             <label for="current_password" class="block text-sm font-medium text-gray-600">Current Password:</label>
             <input type="password" name="current_password" id="current_password" placeholder="Old Password" class="mt-1 p-2 border rounded-md w-full">
@@ -75,7 +67,5 @@ if (isset($_POST['submit'])) {
         </div>
     </form>
 </section>
-
-
 
 <?php include('partials/footer.php'); ?>
